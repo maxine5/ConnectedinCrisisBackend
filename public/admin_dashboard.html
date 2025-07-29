@@ -8,7 +8,7 @@
   <h1>Admin Dashboard</h1>
 
   <h2>Add Evacuee</h2>
-  <form method="POST" action="/add-evacuee">
+  <form action="https://connectedincrisisbackend.onrender.com/add-evacuee" method="POST">
     <label>Name:</label><input name="name" required><br>
     <label>Date of Birth (YYYY-MM-DD):</label><input name="dob" required><br>
     <label>Shelter Name:</label><input name="shelter" required><br>
@@ -16,12 +16,12 @@
   </form>
 
   <h2>Add Shelter</h2>
-  <form method="POST" action="/add-shelter">
+  <form action="https://connectedincrisisbackend.onrender.com/add-shelter" method="POST">
     <label>Shelter Name:</label><input name="name" required><br>
     <label>Address:</label><input name="address" required><br>
     <button type="submit">Add Shelter</button>
   </form> <h2>Delete Evacuee</h2>
-<form method="POST" action="/delete-evacuee">
+  <form action="https://connectedincrisisbackend.onrender.com/delete-evacuee" method="POST">
   <label>Evacuee Name:</label><input name="name" required><br>
   <label>Date of Birth (YYYY-MM-DD):</label><input name="dob" required><br>
   
