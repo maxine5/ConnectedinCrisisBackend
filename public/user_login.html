@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>User Login</h1>
+  <form method="POST" action="/user-login">
+    <label>Username:</label><input name="username" pattern="[A-Za-z0-9]+" title="Only letters and numbers allowed" required><br>
+    <label>Password:</label><input type="password" name="password" required><br>
+    <button type="submit">Login</button>
+  </form>
+
+<script>
+  document.querySelector('form').addEventListener('submit', function(e) {
+    const user = document.querySelector('input[name="username"]').value.trim();
+    const pass = document.querySelector('input[name="password"]').value.trim();
+    const userRegex = /^[A-Za-z0-9]+$/;
+
+    if (!userRegex.test(user)) {
+      alert("Invalid username. Only letters and numbers allowed.");
+      e.preventDefault();
+    } else if (pass.length < 3) {
+      alert("Password must be at least 3 characters.");
+      e.preventDefault();
+    }
+  });
+</script>
+</body>
+</html>
