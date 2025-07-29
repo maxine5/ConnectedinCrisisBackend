@@ -112,7 +112,7 @@ app.get('/user-dashboard', (req, res) => {
   }
 });
 // Serve user add evacuee page
-app.get('/user-add-eacuee', (req, res) => {
+app.get('/user-add-evacuee', (req, res) => {
   if (req.session.user) {
     res.sendFile(path.join(__dirname, 'public/user_add_evacuee.html'));
   } else {
