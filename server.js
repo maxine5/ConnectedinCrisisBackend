@@ -38,6 +38,12 @@ db.serialize(() => {
     name TEXT NOT NULL,
     address TEXT NOT NULL
   )`);
+  db.run(`CREATE TABLE IF NOT EXISTS qr_links (
+  qr_id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  dob TEXT NOT NULL
+)`);
+
 });
 
 // Home page
