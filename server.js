@@ -23,6 +23,24 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+app.get('/lookup', (req, res) => {
+  const name = req.query.name;
+  const dob = req.query.dob;
+
+  db.get("SELECT shelter FROM evacuees WHERE name = ? AND dob = ?", [name, dob], (err, row) => {
+    if (err) {
+      console.error(err);
+      return res.redirect(`/result_template.html?r=${encodeURIComponent('Error searching database.')}`);
+    }
+
+    if (row) {
+      const result = `Evacuee found. Assigned shelter: ${row.shelter}`;
+      res.redirect(`/result_template.html?r=${encodeURIComponent(result)}`);
+    } else {
+      res.redirect(`/result_template.html?r=${encodeURIComponent('No matching evacuee found.')}`);
+    }
+  });
+});
 
 // Create tables if they don't exist
 db.serialize(() => {
