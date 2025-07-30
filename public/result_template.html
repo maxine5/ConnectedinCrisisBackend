@@ -41,21 +41,26 @@
 <body>
   <div class="result-box">
     <h2>Search Result</h2>
-    <p id="resultText"></p>
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
+    <p><strong>Shelter:</strong> <span id="shelter"></span></p>
+
     <a class="back-button" href="https://connectedincrisisbackend.onrender.com">Back to Search</a>
   </div>
 
- <script>
+<script>
   function escapeHTML(str) {
-    return str ? str.replace(/[&<>"']/g, function(m) {
-      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+    return str ? str.replace(/[&<>"']/g, function (m) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
     }) : '';
   }
 
   const params = new URLSearchParams(window.location.search);
-  const result = params.get('r');
-  document.getElementById('resultText').textContent = escapeHTML(result) || 'No result found.';
+  document.getElementById('name').textContent = escapeHTML(params.get('name')) || 'Unknown';
+  document.getElementById('dob').textContent = escapeHTML(params.get('dob')) || 'Unknown';
+  document.getElementById('shelter').textContent = escapeHTML(params.get('shelter')) || 'Unknown';
 </script>
+
 
 </body>
 </html>

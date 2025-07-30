@@ -32,12 +32,10 @@ app.get('/lookup', (req, res) => {
       console.error(err);
       return res.redirect(`/result_template.html?r=${encodeURIComponent('Error searching database.')}`);
     }
-
-    if (row) {
-      const result = `Evacuee found. Assigned shelter: ${row.shelter}`;
-      res.redirect(`/result_template.html?r=${encodeURIComponent(result)}`);
+     if (row) {
+      res.redirect(`/result_template.html?name=${encodeURIComponent(name)}&dob=${encodeURIComponent(dob)}&shelter=${encodeURIComponent(row.shelter)}`);
     } else {
-      res.redirect(`/result_template.html?r=${encodeURIComponent('No matching evacuee found.')}`);
+      res.redirect(`/result_template.html?name=${encodeURIComponent(name)}&dob=${encodeURIComponent(dob)}&shelter=Not%20found`);
     }
   });
 });
@@ -75,14 +73,12 @@ app.post('/lookup', (req, res) => {
   db.get('SELECT shelter FROM evacuees WHERE name = ? AND dob = ?', [name, dob], (err, row) => {
     if (err) return res.status(500).send('Error querying database.');
     if (row) {
-      const result = `Name: ${name}<br>DOB: ${dob}<br>Shelter: ${row.shelter}`;
-      res.redirect(`/result_template.html?r=${encodeURIComponent(result)}`);
+      res.redirect(`/result_template.html?name=${encodeURIComponent(name)}&dob=${encodeURIComponent(dob)}&shelter=${encodeURIComponent(row.shelter)}`);
     } else {
-      res.redirect(`/result_template.html?r=${encodeURIComponent('No matching evacuee found.')}`);
+      res.redirect(`/result_template.html?name=${encodeURIComponent(name)}&dob=${encodeURIComponent(dob)}&shelter=Not%20found`);
     }
   });
 });
-
 
 // Admin login page
 app.get('/admin', (req, res) => {
