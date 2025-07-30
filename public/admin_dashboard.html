@@ -47,5 +47,28 @@
 
 <br><a class="back-button" href="index.html">Go Back Home</a>
 
+<div id="confirmation" style="display: none; padding: 1rem; background: #d4edda; color: #155724; border-radius: 6px; margin-bottom: 1rem;">
+  <span id="message"></span>
+</div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const success = params.get('success');
+  const messageBox = document.getElementById('confirmation');
+  const messageText = document.getElementById('message');
+
+  if (success === 'evacuee') {
+    messageText.textContent = 'Evacuee added successfully!';
+    messageBox.style.display = 'block';
+  } else if (success === 'shelter') {
+    messageText.textContent = 'Shelter added successfully!';
+    messageBox.style.display = 'block';
+  } else if (success === 'delete') {
+    messageText.textContent = 'Evacuee deleted successfully!';
+    messageBox.style.display = 'block';
+  }
+</script>
+
+
 </body>
 </html>

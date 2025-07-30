@@ -150,7 +150,7 @@ app.post('/add-evacuee', (req, res) => {
     if (err) return res.status(500).send('Error adding evacuee.');
 logAdminAction('ADD_EVACUEE', `Name=${name}, DOB=${dob}, Shelter=${shelter}`);
 
-    res.redirect('/admin-dashboard');
+    res.redirect('/admin-dashboard?success=evacuee');
   });
 });
 
@@ -162,7 +162,7 @@ app.post('/add-shelter', (req, res) => {
     if (err) return res.status(500).send('Error adding shelter.');
 logAdminAction('ADD_SHELTER', `Name=${name}, Address=${address}`);
 
-    res.redirect('/admin-dashboard');
+   res.redirect('/admin-dashboard?success=shelter');
   });
 });
 
@@ -195,7 +195,7 @@ app.post('/delete-evacuee', (req, res) => {
     }
 
     logAdminAction('DELETE_EVACUEE', `Name=${name}, DOB=${dob}`);
-    res.redirect('/admin-dashboard');
+    res.redirect('/admin-dashboard?success=delete');
   });
 });
 app.post('/assign-qr', (req, res) => {
